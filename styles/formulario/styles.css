@@ -159,4 +159,8 @@
     .container {
         margin: 2em;
     }
+
+    .banner__titulo {
+        width: 50%;
+    }
 }

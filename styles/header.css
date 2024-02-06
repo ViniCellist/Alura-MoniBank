@@ -70,5 +70,10 @@
 
     .cabecalho-lista__item-botao {
         display: block;
+
+    }
+
+    .cabecalho-lista__item{
+        margin-right: 5px;
     }
 }
