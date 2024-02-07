@@ -1,8 +1,12 @@
 export default function isCPF(field) {
     const cpf = field.value.replace(/\.|-/g, "");
-    repetitiveNumbers(cpf);
 
-    console.log(repetitiveNumbers(cpf))
+    if(repetitiveNumbers(cpf) || checkFirstDigit(cpf) || checkSecondDigit(cpf)) {
+        console.log('Esse cpf não existe!');
+    } else {
+        console.log('Esse CPF existe!')
+    }
+    
 };
 
 function repetitiveNumbers(cpf) {
@@ -20,4 +24,38 @@ function repetitiveNumbers(cpf) {
     ];
 
     return repeatNumber.includes(cpf);
+};
+
+function checkFirstDigit(cpf) {
+    let plus = 0;
+    let multiply = 10;
+
+    for(let i = 0; i < 9; i++) {
+        plus += cpf[i] * multiply;
+        multiply--;
+    };
+
+    plus = (plus * 10) % 11;
+
+    if(plus == 10 || plus == 11) {
+        plus = 0;
+    };
+    return plus != cpf[9];
+};
+
+function checkSecondDigit(cpf) {
+    let plus = 0;
+    let multiply = 11;
+
+    for(let i = 0; i < 10; i++) {
+        plus += cpf[i] * multiply;
+        multiply--;
+    };
+
+    plus = (plus * 10) % 11;
+
+    if(plus == 10 || plus == 11) {
+        plus = 0;
+    };
+    return plus != cpf[10];
 };
