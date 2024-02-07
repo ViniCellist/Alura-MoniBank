@@ -1,4 +1,5 @@
 import isCPF from "./check-cpf.js";
+import isAge from "./check-age.js";
 
 const formFields = document.querySelectorAll("[required]");
 
@@ -9,5 +10,9 @@ formFields.forEach((field) => {
 function verifyField(field) {
     if (field.name == "cpf" && field.value.length >= 11) {
         isCPF(field);
-    }
+    };
+
+    if(field.name == "aniversario" && field.value != "") {
+        isAge(field);
+    };
 };
