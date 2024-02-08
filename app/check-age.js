@@ -1,8 +1,9 @@
 export default function isAge(field) {
     const dateBirth = new Date(field.value);
-    checkAge(dateBirth);
-
-    console.log(checkAge(dateBirth));
+    
+    if (!checkAge(dateBirth)) {
+        field.setCustomValidity("O usuário não é maior de idade");
+    };
 };
 
 function checkAge(data) {
